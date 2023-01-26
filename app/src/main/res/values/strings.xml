@@ -13,4 +13,8 @@
     <string name="level_easy">Easy</string>
     <string name="level_normal">Normal</string>
     <string name="level_hard">Hard</string>
+
+    <!-- Game screen -->
+    <string name="question_mark">\?</string>
+    <string name="answer_progress">The correct answers %s (minimum %s)</string>
 </resources>
