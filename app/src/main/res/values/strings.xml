@@ -6,4 +6,11 @@
     <string name="title_number_composition">Number composition</string>
     <string name="description_rules">Rules of the game: there will be three figures in front of you,two below and one above, two of them will contain numbers. It is necessary that the sum of the numbers from the two lower figures is equal to the number in the upper figure, for this you need to insert the missing number. \n\nExample: the number 7 is in the upper circle, the question mark is in one of the lower ones, and the number 4 is in the other. So the number 3 should be in place of the question mark, because 3 + 4 = 7</string>
     <string name="button_understand">Understand</string>
+
+    <!-- Choose level screen -->
+    <string name="choose_level">Choose level:</string>
+    <string name="level_test">Test</string>
+    <string name="level_easy">Easy</string>
+    <string name="level_normal">Normal</string>
+    <string name="level_hard">Hard</string>
 </resources>
