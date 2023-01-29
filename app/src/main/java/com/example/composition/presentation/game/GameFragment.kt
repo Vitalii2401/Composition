@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.composition.R
 import com.example.composition.databinding.FragmentGameBinding
+import com.example.composition.domain.entities.GameResult
 import com.example.composition.domain.entities.Level
+import com.example.composition.presentation.game_finished.GameFinishedFragment
 
 class GameFragment : Fragment() {
 
@@ -27,11 +30,25 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
+    private fun launchGameFinishedFragment(result: GameResult) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_view, GameFinishedFragment.newInstance(result))
+            .addToBackStack(null)
+            .commit()
+    }
+
     private fun parseArgs() {
         level = requireArguments().getSerializable(KEY_LEVEL) as Level
     }
 
     companion object {
+
+        const val NAME = "GameFragment"
 
         private const val KEY_LEVEL = "level"
 
