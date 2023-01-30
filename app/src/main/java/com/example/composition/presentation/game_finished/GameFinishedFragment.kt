@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.composition.R
 import com.example.composition.databinding.FragmentGameFinishedBinding
 import com.example.composition.domain.entities.GameResult
 import com.example.composition.presentation.game.GameFragment
@@ -33,6 +34,11 @@ class GameFinishedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupClickListeners()
+        bindViews()
+    }
+
+    private fun setupClickListeners() {
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 retryGame()
@@ -45,6 +51,40 @@ class GameFinishedFragment : Fragment() {
             retryGame()
         }
     }
+
+    private fun bindViews() {
+        with(binding) {
+
+            ivSmile.setImageResource(getSmileResId())
+
+            tvRequiredAnswers.text = getString(
+                R.string.text_required_answers,
+                gameResult.gameSettings.minCountOfRightAnswers.toString()
+            )
+
+            tvScoreAnswers.text = getString(
+                R.string.text_score_answers,
+                gameResult.countOfRightAnswers.toString()
+            )
+
+            tvRequiredPercentage.text = getString(
+                R.string.text_required_percentage,
+                gameResult.gameSettings.minPercentOfRightAnswers.toString()
+            )
+
+            tvScorePercentage.text = getString(
+                R.string.text_score_percentage,
+                getPercentOfRightAnswers().toString()
+            )
+        }
+    }
+
+    private fun getPercentOfRightAnswers(): Int = with(gameResult) {
+        if (countOfQuestions == 0) 0 else ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
+    }
+
+    private fun getSmileResId(): Int =
+        if (gameResult.winner) R.drawable.ic_smile_good else R.drawable.ic_smile_sad
 
     private fun retryGame() {
         requireActivity().supportFragmentManager.popBackStack(

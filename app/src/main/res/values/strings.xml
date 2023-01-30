@@ -19,7 +19,7 @@
     <string name="answer_progress">The correct answers %s (minimum %s)</string>
     <string name="description_game_over">Game over</string>
     <string name="text_required_answers">The required number of correct answers: %s</string>
-    <string name="text_score_answers">Your account: $s</string>
+    <string name="text_score_answers">Your account: %s</string>
     <string name="text_required_percentage">Required percentage of correct answers: %s</string>
     <string name="text_score_percentage">Percent correct answers: %s</string>
     <string name="button_try_again">Try again</string>
