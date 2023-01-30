@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <variable
+            name="gameResult"
+            type="com.example.composition.domain.entities.GameResult" />
+    </data>
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -21,30 +28,34 @@
                 android:layout_gravity="center"
                 android:layout_margin="40dp"
                 android:contentDescription="@string/description_game_over"
-                android:src="@drawable/ic_smile_good" />
+                gameFinishedIVSmileResource="@{gameResult.winner}"
+                tools:src="@drawable/ic_smile_good"/>
 
             <TextView
                 android:id="@+id/tv_required_answers"
+                gameFinishedTVRequiredAnswers="@{gameResult.gameSettings.minCountOfRightAnswers}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_required_answers"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:text="@string/text_required_answers"/>
 
             <TextView
                 android:id="@+id/tv_score_answers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/text_score_answers"
-                android:textSize="18sp" />
+                gameFinishedTVScoreAnswers="@{gameResult.countOfRightAnswers}"
+                android:textSize="18sp"
+                tools:text="@string/text_score_answers"/>
 
             <TextView
                 android:id="@+id/tv_required_percentage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/text_required_percentage"
-                android:textSize="18sp" />
+                gameFinishedTVRequiredPercentage="@{gameResult.gameSettings.minPercentOfRightAnswers}"
+                android:textSize="18sp"
+                tools:text="@string/text_required_percentage"/>
 
             <TextView
                 android:id="@+id/tv_score_percentage"
@@ -52,8 +63,9 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
-                android:text="@string/text_score_percentage"
-                android:textSize="18sp" />
+                gameFinishedTVScorePercentage="@{gameResult}"
+                android:textSize="18sp"
+                tools:text="@string/text_score_percentage"/>
 
             <Button
                 android:id="@+id/button_retry"
