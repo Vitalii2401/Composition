@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 import com.example.composition.R
 import com.example.composition.databinding.FragmentGameFinishedBinding
 import com.example.composition.domain.entities.GameResult
@@ -39,14 +40,6 @@ class GameFinishedFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                retryGame()
-            }
-        }
-
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-
         binding.buttonRetry.setOnClickListener {
             retryGame()
         }
@@ -87,10 +80,7 @@ class GameFinishedFragment : Fragment() {
         if (gameResult.winner) R.drawable.ic_smile_good else R.drawable.ic_smile_sad
 
     private fun retryGame() {
-        requireActivity().supportFragmentManager.popBackStack(
-            GameFragment.NAME,
-            FragmentManager.POP_BACK_STACK_INCLUSIVE
-        )
+        findNavController().popBackStack()
     }
 
     private fun parseArgs() {
@@ -101,7 +91,7 @@ class GameFinishedFragment : Fragment() {
 
     companion object {
 
-        private const val KEY_GAME_RESULT = "result"
+        const val KEY_GAME_RESULT = "result"
 
         fun newInstance(result: GameResult): GameFinishedFragment {
             return GameFinishedFragment().apply {
