@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context="com.example.composition.presentation.welcome.WelcomeFragment">
+<layout>
 
-    <LinearLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context="com.example.composition.presentation.welcome.WelcomeFragment">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_margin="32dp"
-            android:contentDescription="@string/description_welcome_logo"
-            android:src="@drawable/ic_brain" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/title_number_composition"
-            android:textSize="24sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:text="@string/description_rules"
-            android:textSize="16sp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_margin="32dp"
+                android:contentDescription="@string/description_welcome_logo"
+                android:src="@drawable/ic_brain" />
 
-        <Button
-            android:id="@+id/button_understand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="3dp"
-            android:text="@string/button_understand" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/title_number_composition"
+                android:textSize="24sp" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:text="@string/description_rules"
+                android:textSize="16sp" />
 
-</ScrollView>
+            <Button
+                android:id="@+id/button_understand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="3dp"
+                android:text="@string/button_understand" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
